@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:text="나라를 선택해주세요" />
+
+    <ImageButton
+        android:id="@+id/korea"
+        android:layout_width="match_parent"
+        android:layout_height="110dip"
+        android:background="@drawable/currency_korea" />
+
+    <ImageButton
+        android:id="@+id/us"
+        android:layout_width="match_parent"
+        android:layout_height="110dip"
+        android:background="@drawable/currency_unitedstates" />
+
+    <ImageButton
+        android:id="@+id/japan"
+        android:layout_width="match_parent"
+        android:layout_height="110dip"
+        android:background="@drawable/currency_japan" />
+
+    <ImageButton
+        android:id="@+id/eu"
+        android:layout_width="match_parent"
+        android:layout_height="110dip"
+        android:background="@drawable/currency_eu" />
+
+    <ImageButton
+        android:id="@+id/china"
+        android:layout_width="match_parent"
+        android:layout_height="110dip"
+        android:background="@drawable/currency_china" />
+</LinearLayout>
