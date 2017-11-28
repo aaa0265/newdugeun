@@ -1,0 +1,7 @@
+#Tue Nov 28 16:30:23 KST 2017
+base.0=C\:\\Users\\kmucs\\Desktop\\newdugeun\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_4cef4c1ce11e25c377419cb6c28bbf79b489c24b
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\kmucs\\Desktop\\newdugeun\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_32cde65c6ae850bb9ea7b7f861710bedcacda160\\classes.dex
+base.1=C\:\\Users\\kmucs\\Desktop\\newdugeun\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_32cde65c6ae850bb9ea7b7f861710bedcacda160
+file.0=C\:\\Users\\kmucs\\Desktop\\newdugeun\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_4cef4c1ce11e25c377419cb6c28bbf79b489c24b\\classes.dex
