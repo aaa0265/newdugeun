@@ -86,7 +86,7 @@ public class cashbook extends AppCompatActivity {
         });
 
         /////////////////////////////////////////////////////////////////////////
-        // DB에 데이터 조회(저장값들을 출력하는 것)
+        // DB에 데이터 조회 (저장 값들을 출력하는 것)
         /////////////////////////////////////////////////////////////////////////
         Button select = (Button) findViewById(R.id.select);
         select.setOnClickListener(new View.OnClickListener() {

@@ -23,9 +23,9 @@ import android.widget.FrameLayout;
 import java.io.File;
 import java.io.FileOutputStream;
 
-/**
- * 사진 캡쳐  액티비티
- */
+// 사진찍는 activity
+
+
 public class PhotoCaptureActivity extends Activity {
 
 	public static final String TAG = "PhotoCaptureActivity";

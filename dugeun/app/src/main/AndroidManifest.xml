@@ -21,6 +21,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB2z4OWoK4JJccnoxQw_AZZ221dQffRSfM" />
 
+        <!-- 어플을 실행하면 보이는 첫번째 액티비티 : splash
+             res > values > styles 에서 설정해줬음 -->
         <activity
             android:name=".splash"
             android:screenOrientation="portrait"
