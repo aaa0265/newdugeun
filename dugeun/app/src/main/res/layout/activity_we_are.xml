@@ -120,9 +120,10 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintVertical_bias="0.147" />
 
-
+        //android:onClick="info" : 버튼을 클릭하며 info파일로 넘어간다.
+        //android:id="@+id/button : 객체의 id를 통해 유저와 상호작용을 할 수 있다.
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"

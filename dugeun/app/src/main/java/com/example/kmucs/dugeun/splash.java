@@ -11,11 +11,13 @@ public class splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try{
-            Thread.sleep(2000);
+            Thread.sleep(2000);// 2초쉬고 넘어간다.
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //로딩이 끝난후 이동할 액티비티 -> dutuen.class로 이동할 것!
         startActivity(new Intent(this,Duguen.class));
+        //종료하기
         finish();
     }
 }
