@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB2z4OWoK4JJccnoxQw_AZZ221dQffRSfM" />
@@ -41,9 +42,10 @@
 
         <activity android:name=".mappage" />
 
-        <activity android:name=".we_are">
-            <activity android:name=".info2"/>
-        </activity>
+        <activity android:name=".we_are"/>
+
+        <activity android:name=".info2"/>
+
 
         <activity android:name=".exchange">
             <activity android:name=".exchange_current"/>

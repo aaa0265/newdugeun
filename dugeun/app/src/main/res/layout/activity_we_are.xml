@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jiwon.newapp.we_are">
+    tools:context="com.example.kmucs.dugeun.Duguen">
 
     <TextView
         android:layout_width="224dp"
