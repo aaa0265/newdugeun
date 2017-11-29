@@ -36,9 +36,12 @@ import java.util.Date;
 /**
  새 메모 / 메모 보기 액티비티
  */
+
 public class MemoInsertActivity extends Activity {
 
 	public static final String TAG = "MemoInsertActivity";
+
+	// 변수 설정
 
 	EditText mMemoEdit;
 	ImageView mPhoto;
@@ -80,6 +83,7 @@ public class MemoInsertActivity extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// 메모 입력 layout 출력
 		setContentView(R.layout.memo_insert_activity);
 		titleBackgroundBtn = (Button)findViewById(R.id.titleBackgroundBtn);
 		mPhoto = (ImageView)findViewById(R.id.insert_photo);

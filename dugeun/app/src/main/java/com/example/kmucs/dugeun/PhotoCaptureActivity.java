@@ -30,13 +30,11 @@ public class PhotoCaptureActivity extends Activity {
 
 	public static final String TAG = "PhotoCaptureActivity";
 
+	//객체 생성
 	CameraSurfaceView mCameraView;
-
 	FrameLayout mFrameLayout;
 
-	/**
-	 * 버튼을 두 번 이상 누를 때 문제 해결
-	 */
+	//버튼을 두 번 눌렀을 때
 	boolean processing = false;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -48,20 +46,23 @@ public class PhotoCaptureActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+		// 촬영화면 뜨는 레이아웃 photo_capture_activity 출력
         setContentView(R.layout.photo_capture_activity);
 
         mCameraView = new CameraSurfaceView(getApplicationContext());
+		// 카메라 화면 출력
         mFrameLayout = (FrameLayout) findViewById(R.id.frame);
         mFrameLayout.addView(mCameraView);
 
         setCaptureBtn();
-
     }
 
+    // 촬영 버튼 눌렀을 때
     public void setCaptureBtn() {
     	Button takeBtn = (Button) findViewById(R.id.capture_takeBtn);
         takeBtn.setOnClickListener(new OnClickListener() {
         	public void onClick(View v) {
+				// processing = false 일때, 촬영됨.
         		if (!processing) {
         			processing = true;
 	        		mCameraView.capture(new CameraPictureCallback());
@@ -70,17 +71,15 @@ public class PhotoCaptureActivity extends Activity {
         });
     }
 
-    /**
-     * 키 이벤트 처리 (카메라 찍기 버튼)
-     */
+	// key 이벤트 처리 (카메라 찍기 버튼)
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_CAMERA) {
 			mCameraView.capture(new CameraPictureCallback());
-
 			return true;
-        } else if(keyCode == KeyEvent.KEYCODE_BACK) {
-            finish();
+        }
 
+        else if(keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
 			return true;
 		}
 
@@ -107,6 +106,7 @@ public class PhotoCaptureActivity extends Activity {
         	resultBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, bitmapWidth, bitmapHeight, matrix, true);
 
             try {
+				// FOLDER_PHOTO = 사진 저장 위치
             	File photoFolder = new File(BasicInfo.FOLDER_PHOTO);
 
             	//폴더가 없다면 폴더를 생성한다.

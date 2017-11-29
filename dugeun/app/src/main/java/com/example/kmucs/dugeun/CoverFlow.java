@@ -10,6 +10,7 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 
 // 사진 불러오기 선택시 보여줄 화면을 구성하는 class
+
 public class CoverFlow extends Gallery {
 
 	private Camera camera = new Camera();

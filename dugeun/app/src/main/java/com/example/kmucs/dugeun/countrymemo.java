@@ -39,12 +39,13 @@ public class countrymemo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_countrymemo); //layout은 activity_countrymemo.
 
-        // SD Card checking
+        // SD Card 확인하기
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {             //SD카드가 없다면
             Toast.makeText(this, "SD 카드가 없습니다. SD 카드를 넣은 후 다시 실행하십시오.", Toast.LENGTH_LONG).show();
             return;
-        } else {                                                                                    //SD카드가 존재 한다면
-            String externalPath = Environment.getExternalStorageDirectory().getAbsolutePath();      //externalPath : 외장메모리path
+        }
+        else {                                                                                      //SD카드가 존재 한다면
+            String externalPath = Environment.getExternalStorageDirectory().getAbsolutePath();      //externalPath : 외장메모리 path
             if (!com.example.kmucs.dugeun.BasicInfo.ExternalChecked && externalPath != null) {
                 com.example.kmucs.dugeun.BasicInfo.ExternalPath = externalPath + File.separator;
                 Log.d(TAG, "ExternalPath : " + com.example.kmucs.dugeun.BasicInfo.ExternalPath);
@@ -92,6 +93,7 @@ public class countrymemo extends Activity {
         checkDangerousPermissions();
     }
 
+    // 어플 깔고 처음에 카메라, 갤러리 이용 할 수 있는 권한을 확인.
     private void checkDangerousPermissions() {
         String[] permissions = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -148,6 +150,7 @@ public class countrymemo extends Activity {
     /**
      * 데이터베이스 열기 (데이터베이스가 없을 때는 만들기)
      */
+
     public void openDatabase() {
         // open database
         if (mDatabase != null) {
