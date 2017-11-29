@@ -19,6 +19,8 @@ public class we_are extends AppCompatActivity {
         // info로 넘어가기
         // getApplicationContext : 현재 액티비티 정보를 가지고 있음
         Intent intent = new Intent(getApplicationContext(), info2.class);
+        //intent 할 객체 intent 생성, -> 이동할 액티비티 클래스( info2) 를 인자로 제공해주기
         startActivity(intent);
+        //startActivity 는 화면전환을 뜻함 -> intent를 실행하라 -> info로 액티비티 넘어감!
     }
 }

@@ -48,9 +48,6 @@
 
 
         <activity android:name=".exchange">
-            <activity android:name=".exchange_current"/>
-            <activity android:name=".exchange_exchanged">
-            </activity>
         </activity>
 
         <activity
