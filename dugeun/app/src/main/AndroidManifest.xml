@@ -41,9 +41,10 @@
 
         <activity android:name=".mappage" />
 
-        <activity android:name=".we_are">
-            <activity android:name=".info2"/>
-        </activity>
+        <activity android:name=".we_are"/>
+        <activity android:name=".info2"/>
+
+
 
         <activity android:name=".exchange">
         </activity>

@@ -101,9 +101,9 @@
                 android:id="@+id/result"
                 android:layout_width="match_parent"
                 android:layout_height="70dip"
+                android:layout_marginRight="5dip"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:layout_marginRight="5dip"
                 android:textColor="#D3B39E"
                 android:textSize="45sp" />
         </LinearLayout>
