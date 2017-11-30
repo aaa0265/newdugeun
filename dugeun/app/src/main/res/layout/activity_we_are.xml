@@ -133,7 +133,7 @@
             android:backgroundTint="#ECCFC9"
             android:text="오픈소스 라이센스"
             android:textSize="18sp"
-            android:onClick="openbutton"
+            android:onClick="info2"
             app:layout_constraintRight_toLeftOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
