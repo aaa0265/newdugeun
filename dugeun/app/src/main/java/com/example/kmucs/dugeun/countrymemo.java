@@ -1,6 +1,7 @@
 package com.example.kmucs.dugeun;
 
 //countrymemo의 메인 자바 파일.
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;

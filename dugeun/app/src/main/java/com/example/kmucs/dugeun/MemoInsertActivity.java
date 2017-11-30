@@ -191,7 +191,6 @@ public class MemoInsertActivity extends Activity {
 	 * 하단 메뉴 버튼 설정
 	 */
 
-
     public void setBottomButtons() {
 		//메모 입력시, 저장과 닫기 버튼 설정
     	insertSaveBtn = (Button)findViewById(R.id.insert_saveBtn);
@@ -217,17 +216,21 @@ public class MemoInsertActivity extends Activity {
 			}
 		});
 	}
+//---------------------------------------------------------------------------------------------
+
 
 	/**
      * 데이터베이스에 레코드 추가
      */
     private void saveInput() {
 
+		// 사진 파일의 이름을 받아옴.
     	String photoFilename = insertPhoto();
     	int photoId = -1;
 
     	String SQL = null;
 
+		//사진이 존재
     	if (photoFilename != null) {
 	    	// query picture id
 	    	SQL = "select _ID from " + MemoDatabase.TABLE_PHOTO + " where URI = '" + photoFilename + "'";
@@ -241,6 +244,7 @@ public class MemoInsertActivity extends Activity {
 	    	}
     	}
 
+    	// 형식 지정
 		SQL = "insert into " + MemoDatabase.TABLE_MEMO +
 				"(INPUT_DATE, CONTENT_TEXT, ID_PHOTO) values(" +
 				"DATETIME('" + mDateStr + "'), " +
@@ -294,7 +298,8 @@ public class MemoInsertActivity extends Activity {
 
 	    		mMediaPhotoId = String.valueOf(photoId);
 	    	}
-    	} else if(isPhotoCanceled && isPhotoFileSaved) {
+    	}
+    	else if(isPhotoCanceled && isPhotoFileSaved) {
     		SQL = "delete from " + MemoDatabase.TABLE_PHOTO +
     			" where _ID = '" + mMediaPhotoId + "'";
 			Log.d(TAG, "SQL : " + SQL);
@@ -341,16 +346,18 @@ public class MemoInsertActivity extends Activity {
     	finish();
     }
 
-
+//-----------------------------------------------------------------------------------------
     /**
      * 앨범의 사진을 사진 폴더에 복사한 후, PICTURE 테이블에 사진 정보 추가
      * 이미지의 이름은 현재 시간을 기준으로 한 getTime() 값의 문자열 사용
      */
     private String insertPhoto() {
-       	String photoName = null;
+       	String photoName = null; //초기값
 
+		//사진을 찍을 때
     	if (isPhotoCaptured) { // captured Bitmap
 	    	try {
+				// 메모 수정시
 	    		if (mMemoMode != null && mMemoMode.equals(BasicInfo.MODE_MODIFY)) {
 	    			Log.d(TAG, "previous photo is newly created for modify mode.");
 
@@ -402,6 +409,8 @@ public class MemoInsertActivity extends Activity {
     	return photoName;
     }
 
+    //-------------------------------------------------------------------------------------
+
 	private void deleteMemo() {
 
 		// 포토 데이테 베이스 삭제
@@ -434,6 +443,7 @@ public class MemoInsertActivity extends Activity {
 		finish();
 	}
 
+	//지금 시간으로 사진이름 정하기
     private String createFilename() {
     	Date curDate = new Date();
     	String curDateStr = String.valueOf(curDate.getTime());
@@ -441,13 +451,15 @@ public class MemoInsertActivity extends Activity {
     	return curDateStr;
 	}
 
-
+	// 사진 찍을때, true일때 사진찍기
     public void setMediaLayout() {
     	isPhotoCaptured = false;
 
     }
 
+    //날짜 설정하기
     private void setCalendar(){
+        //날짜 버튼 눌렀을때, 캘린더에서 날짜 선택
     	insertDateButton = (Button) findViewById(R.id.insert_dateBtn);
     	insertDateButton.setOnClickListener(new OnClickListener() {
     		public void onClick(View v) {
@@ -476,10 +488,12 @@ public class MemoInsertActivity extends Activity {
     	Date curDate = new Date();
     	mCalendar.setTime(curDate);
 
+		//연도, 월, 일
     	int year = mCalendar.get(Calendar.YEAR);
     	int monthOfYear = mCalendar.get(Calendar.MONTH);
     	int dayOfMonth = mCalendar.get(Calendar.DAY_OF_MONTH);
 
+		//날짜 버튼위로 내가 선택한 날짜가 보인다
     	insertDateButton.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth + "일");
 
     }
@@ -488,6 +502,7 @@ public class MemoInsertActivity extends Activity {
     /**
      * 날짜 설정 리스너
      */
+    // 날짜 선택 버튼
     DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
 		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 			mCalendar.set(year, monthOfYear, dayOfMonth);
