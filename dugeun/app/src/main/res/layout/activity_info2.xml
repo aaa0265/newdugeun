@@ -11,6 +11,7 @@
     // layout_width : 폭넓이 조정 / layout_height : 높이 조정
     // app:layout_constraintLeft_toLeftOf="parent" : EditText의 속성으로 추가돼 edit text의 left을 parent의 left에 맞추겠다
     // wrap-content : text길이만큼 자동으로 늘어나도록 하는 것
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,4 +31,5 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintVertical_bias="0.12"
         android:layout_marginBottom="8dp" />
+
 </android.support.constraint.ConstraintLayout>

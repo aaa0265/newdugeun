@@ -10,19 +10,18 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 
 // 사진 불러오기 선택시 보여줄 화면을 구성하는 class
+
 public class CoverFlow extends Gallery {
 
 	private Camera camera = new Camera();
 
-	/**
-	 * Max Rotation Angle
-	 */
-	public static int maxRotationAngle = 55;
+	// 미리보기로 나오는 사진과 사진 사이의 각도
+	// 숫자가 작을수록 사진을 넘겨볼 때 벌어진 부분이 좁아서 평면처럼 이어져 보임.
+	public static int maxRotationAngle = 50;
 
-	/**
-	 * Max Zoom Level
-	 */
-	public static int maxZoom = -60;
+	// 미리보기 사진 화면의 크기 설정
+	// 숫자가 작을수록 화면이 커보임
+	public static int maxZoom = -350;
 
 	private int centerPoint;
 

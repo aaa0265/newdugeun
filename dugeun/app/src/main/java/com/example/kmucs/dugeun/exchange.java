@@ -18,33 +18,35 @@ public class exchange extends AppCompatActivity {
     TextView resultValue; //환전 후 숫자
     
     // 환전 from before_country_num to after_country_num
+    // 스피너에서 선택한 나라의 숫자가 저장됨
     int before_country_num = 0;
     int after_country_num = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //exchange layout으로 화면 출력
         setContentView(R.layout.activity_exchange);
 
 
-        //숫자 입력 하는 부분 처음에 0으로 표기
+        //숫자 입력 하는 부분(textValue) 처음에 0으로 표기
         mTextValue = (TextView) findViewById(R.id.textValue);
         mTextValue.setText("0");
 
-        //환전 후 보여지는 부분 처음에 아무것도 표기하지 않기
+        //환전 후 보여지는 부분(result) 처음에 아무것도 표기하지 않기
         resultValue = (TextView)findViewById(R.id.result);
         resultValue.setText(null);
         
-        //before
-        //스피너 객체 생성?
+        // before
+        // 스피너 객체 생성
         Spinner before_spinner = (Spinner)findViewById(R.id.before);
         
-        //스피너 어댑터 설정
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Country,android.R.layout.simple_spinner_item);
+        // 스피너 어댑터 설정
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         before_spinner.setAdapter(adapter);
 
-        //스피너 이벤트 발생
+        // 스피너 이벤트 발생(before) : 나라 선택하기
         before_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -55,16 +57,16 @@ public class exchange extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        //after
-        //스피터 객체 생성?
+        // after
+        // 스피터 객체 생성
         Spinner after_spinner = (Spinner)findViewById(R.id.after);
 
-        //스피너 어댑터 설정
-        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this,R.array.Country,android.R.layout.simple_spinner_item);
+        // 스피너 어댑터 설정
+        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this,R.array.Country, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         after_spinner.setAdapter(adapter2);
 
-        //스피너 이벤트 발생(after)
+        //스피너 이벤트 발생(after) : 나라 선택하기
         after_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -76,13 +78,14 @@ public class exchange extends AppCompatActivity {
         });
     }
 
+    //서버로 이동 : onclick
     public void server(View v) {
         Toast.makeText(this, "환율 계산기 사이트로 넘어갑니다.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent (Intent.ACTION_VIEW, Uri.parse("https://m.kr.investing.com/currency-converter/"));
         startActivity(intent);
     }
 
-    // 입력하는대로 출력
+    // string 형식 -> float 형식으로 바꿔준다. onNumberButton 에서 호출됨.
     public float getTextValueFloat() {
         float fValue = 0.f;
         String strText = mTextValue.getText().toString();
@@ -90,7 +93,7 @@ public class exchange extends AppCompatActivity {
         return fValue;
     }
 
-    //숫자로 바꾸기인가..?
+    // 입력한 숫자대로 mTextValue 에 저장한다.
     public void onNumberButton(String strNumber) {
         String strText = mTextValue.getText().toString();
         float fValue = getTextValueFloat();
@@ -101,10 +104,11 @@ public class exchange extends AppCompatActivity {
         mTextValue.setText(strText);
     }
 
-    //버튼을 눌렀을 시
-    //숫자 버튼을 눌렀을 때 해당하는 숫자 출력
+
+    // 버튼 클릭
     public void onClick(View v) {
 
+        //숫자 버튼 눌렀을 때
         switch (v.getId()) {
             case R.id.button0:
                 onNumberButton("0");
@@ -146,14 +150,14 @@ public class exchange extends AppCompatActivity {
                 onNumberButton("9");
                 break;
 
-            //clear 버튼을 누르면 입력받은 숫자를 초기화하고
-            // 숫자 입력하는 부분은 0으로, 환전 후 표기하는 부분은 null값으로
+            // clear 버튼을 누르면 입력받은 숫자를 초기화하고
+            // 숫자 입력하는 부분은 0으로, 환전 후 표기하는 부분은 null 값으로 돌아감
             case R.id.buttonClear:
                 mTextValue.setText("0");
                 resultValue.setText("");
                 break;
 
-            //back 버튼을 누르면 입력한 숫자 하나 지워짐
+            // back 버튼을 누르면 입력한 숫자 하나 지워짐
             case R.id.buttonDel : {
                 String strText = mTextValue.getText().toString();
                 int nLength = strText.length();
@@ -166,12 +170,13 @@ public class exchange extends AppCompatActivity {
             }
             break;
 
-            //change 버튼을 누르면 입력받은 숫자를 해당 국가에 맞게 환전 후 출력
+            // 환율 계산~
+            // change 버튼을 누르면 입력받은 숫자를 해당 국가에 맞게 환전 후 출력
             // 0:한국 1:미국 2:유럽 3:일본 4:중국
             case R.id.buttonchange : {
-                float before/*입력 받은 수*/, after/*출력할 수*/;
+                float before /*입력 받은 수*/, after/*출력할 수*/;
                 String s = null; //출력문
-                before = Integer.parseInt(mTextValue.getText().toString());
+                before = Integer.parseInt(mTextValue.getText().toString());     //mTextValue : 입력받은 숫자
                 switch(before_country_num) {
                     case 0:
                         switch(after_country_num) {
@@ -313,6 +318,7 @@ public class exchange extends AppCompatActivity {
                         }
                         break;
                 }
+
                 resultValue.setText(s); // 화면에 띄우기
             }
             break;

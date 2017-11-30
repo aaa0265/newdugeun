@@ -13,6 +13,7 @@ public class cashbookDB extends SQLiteOpenHelper {
 
     // DBHelper 생성자로 관리할 DB 이름과 버전 정보를 받음
     public cashbookDB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        //super : 상위클래스의 생성자를 호출
         super(context, name, factory, version);
     }
 
@@ -21,8 +22,8 @@ public class cashbookDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         // 새로운 테이블 생성
-        /* 이름은 MONEYBOOK이고, 자동으로 값이 증가하는 _id 정수형 기본키 컬럼과
-        item 문자열 컬럼, price 정수형 컬럼, create_at 문자열 컬럼으로 구성된 테이블을 생성. */
+        /* 이름은 MONEYBOOK이고,item 문자열 컬럼, price 정수형 컬럼, create_at 문자열 컬럼으로 구성된 테이블을 생성.
+        // 테이블 0번째로 증가하는 정수가 있었지만 고정된 문자열만 출력할 것임*/
 
         db.execSQL("CREATE TABLE MONEYBOOK (_id INTEGER PRIMARY KEY AUTOINCREMENT, item TEXT, price INTEGER, create_at TEXT);");
     }
@@ -36,11 +37,8 @@ public class cashbookDB extends SQLiteOpenHelper {
     public void insert(String create_at, String item, int price) {
         // 읽고 쓰기가 가능하게 DB 열기
         SQLiteDatabase db = getWritableDatabase();
-        // DB에 입력한 값으로 행 추가
+        // DB에 입력한 값(parameter로 받아옴)으로 행 추가
         db.execSQL("INSERT INTO MONEYBOOK VALUES(null, '" + item + "', " + price + ", '" + create_at + "');");
-        if (item == null || price == 0){
-            db.execSQL("입력하세요");
-        }
         db.close();
     }
 
@@ -60,11 +58,13 @@ public class cashbookDB extends SQLiteOpenHelper {
 
     public String getResult() {
         // 읽기가 가능하게 DB 열기
+        // 처음에는 result값 초기화
         SQLiteDatabase db = getReadableDatabase();
         String result = "";
 
         // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
         Cursor cursor = db.rawQuery("SELECT * FROM MONEYBOOK", null);
+        // 테이블의 모든 행을 방문
         while (cursor.moveToNext()) {
             result += " 지출내역 : "
                     + cursor.getString(1)

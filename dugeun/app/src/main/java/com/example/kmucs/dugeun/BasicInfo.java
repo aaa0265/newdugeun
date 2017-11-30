@@ -4,24 +4,17 @@ import java.text.SimpleDateFormat;
 
 public class BasicInfo {
 
-	/**
-	 * 외장 메모리 패스
-	 */
+	// 외장 메모리 패스
 	public static String ExternalPath = "/sdcard/";
 
-	/**
-	 * 외장 메모리 패스 체크 여부
-	 */
+	// 외장 메모리 패스 체크 여부
+
 	public static boolean ExternalChecked = false;
 
-	/**
-	 * 사진 저장 위치
-	 */
+	//사진 저장 위치
 	public static String FOLDER_PHOTO 	= "Memo_Storage/photo/";
 
-	/**
-	 * 데이터베이스 이름
-	 */
+	//데이터 베이스 이름 설정
 	public static String DATABASE_NAME = "Memo_Storage/memo.db";
 
 
@@ -49,6 +42,7 @@ public class BasicInfo {
 
 
 	//========== 날짜 포맷  ==========//
+
 	public static SimpleDateFormat dateDayNameFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
 	public static SimpleDateFormat dateDayFormat = new SimpleDateFormat("yyyy-MM-dd");
 

@@ -16,10 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB2z4OWoK4JJccnoxQw_AZZ221dQffRSfM" />
 
+        <!-- 어플을 실행하면 보이는 첫번째 액티비티 : splash
+             res > values > styles 에서 설정해줬음 -->
         <activity
             android:name=".splash"
             android:screenOrientation="portrait"
@@ -42,8 +45,13 @@
         <activity android:name=".mappage" />
 
         <activity android:name=".we_are"/>
+<<<<<<< HEAD
         <activity android:name=".info2"/>
 
+=======
+
+        <activity android:name=".info2"/>
+>>>>>>> 3e5b0564bd7c63d18db18ab7268d68019a89ac60
 
 
         <activity android:name=".exchange">

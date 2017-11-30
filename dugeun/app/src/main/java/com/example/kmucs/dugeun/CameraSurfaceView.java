@@ -8,9 +8,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
-/**
- * 카메라 미리보기를 위한 서피스뷰
- */
+// 카메라 미리보기 surface view
+
+
 public class CameraSurfaceView extends SurfaceView implements Callback {
 
 	public static final String TAG = "CameraSurfaceView";

@@ -16,14 +16,14 @@ public class cashbook extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cashbook);
+        setContentView(R.layout.activity_cashbook);                        // view는 cashbook layout
 
-        final cashbookDB dbHelper = new cashbookDB(getApplicationContext(), "MoneyBook.db", null, 1);
+        final cashbookDB dbHelper = new cashbookDB(getApplicationContext(), "MoneyBook.db", null, 1);   // moneyBook은 임의로 만든 이름
 
         // 테이블에 있는 모든 데이터 출력
         final TextView result = (TextView) findViewById(R.id.result);
 
-        final EditText etDate = (EditText) findViewById(R.id.date);
+        final EditText etDate = (EditText) findViewById(R.id.date);         // 날짜, 항목, 금액
         final EditText etItem = (EditText) findViewById(R.id.item);
         final EditText etPrice = (EditText) findViewById(R.id.price);
 
@@ -40,6 +40,7 @@ public class cashbook extends AppCompatActivity {
 
         /////////////////////////////////////////////////////////////////////////
         // DB에 데이터 추가
+        // 함수를 객체로 만들었음. onClick이 onClickListener의 내용.
         /////////////////////////////////////////////////////////////////////////
         Button insert = (Button) findViewById(R.id.insert);
         insert.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +86,7 @@ public class cashbook extends AppCompatActivity {
         });
 
         /////////////////////////////////////////////////////////////////////////
-        // DB에 데이터 조회
+        // DB에 데이터 조회 (저장 값들을 출력하는 것)
         /////////////////////////////////////////////////////////////////////////
         Button select = (Button) findViewById(R.id.select);
         select.setOnClickListener(new View.OnClickListener() {
