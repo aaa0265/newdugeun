@@ -9,7 +9,9 @@ import android.view.animation.Transformation;
 import android.widget.Gallery;
 import android.widget.ImageView;
 
-// 사진 불러오기 선택시 보여줄 화면을 구성하는 class
+/** coverflow : 중간(선택된 사진) 을 제외하고는 가운데를 기준으로 옆에 있는 사진들은 기울어져 보이는 효과
+ *  (앨범에서 사진 불러오기 선택시 보여짐) */
+
 
 public class CoverFlow extends Gallery {
 
@@ -93,6 +95,8 @@ public class CoverFlow extends Gallery {
 		return view.getLeft() + view.getWidth() / 2;
 	}
 
+
+	// 갤러리 뷰 안에서 스크롤 할 때, child가 어디에 위치 했는지 알고 싶음.
 	protected boolean getChildStaticTransformation(View child, Transformation t) {
 
 		final int childCenter = getCenterOfView(child);
@@ -103,7 +107,8 @@ public class CoverFlow extends Gallery {
 
 		if (childCenter == centerPoint) {
 			transformImageBitmap((ImageView) child, t, 0);
-		} else {
+		}
+		else {
 			rotationAngle = (int) (((float) (centerPoint - childCenter)/ childWidth) *  maxRotationAngle);
 			if (Math.abs(rotationAngle) > maxRotationAngle) {
 				rotationAngle = (rotationAngle < 0) ? -maxRotationAngle : maxRotationAngle;

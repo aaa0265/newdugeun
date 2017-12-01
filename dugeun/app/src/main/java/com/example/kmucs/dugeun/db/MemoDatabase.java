@@ -8,7 +8,9 @@ import android.util.Log;
 
 import com.example.kmucs.dugeun.BasicInfo;
 
-public class MemoDatabase { // 메모 데이터베이스
+/** memo 데이터 베이스 */
+
+public class MemoDatabase {
 
 	public static final String TAG = "MemoDatabase";
 

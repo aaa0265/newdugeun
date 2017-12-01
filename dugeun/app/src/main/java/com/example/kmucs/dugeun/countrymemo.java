@@ -70,26 +70,26 @@ public class countrymemo extends Activity {
         });
 
 
-        // 새 메모 버튼 설정
+        // 새 메모 버튼 설정(메모 추가)
         Button newMemoBtn = (Button)findViewById(R.id.newMemoBtn);
         newMemoBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d(TAG, "newMemoBtn clicked.");
 
+                // 화면 변경(메모 입력화면)
                 Intent intent = new Intent(getApplicationContext(), com.example.kmucs.dugeun.MemoInsertActivity.class);
                 intent.putExtra(com.example.kmucs.dugeun.BasicInfo.KEY_MEMO_MODE, com.example.kmucs.dugeun.BasicInfo.MODE_INSERT);
                 startActivityForResult(intent, com.example.kmucs.dugeun.BasicInfo.REQ_INSERT_ACTIVITY);
             }
         });
 
-        // 닫기 버튼 설정
+        // 닫기 버튼 설정 (화면 닫음)
         Button closeBtn = (Button)findViewById(R.id.closeBtn);
         closeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
         });
-
 
         checkDangerousPermissions();
     }
@@ -136,7 +136,7 @@ public class countrymemo extends Activity {
         }
     }
 
-
+    // 메모 메뉴 시작
     protected void onStart() {
 
         // 데이터베이스 열기
@@ -160,7 +160,9 @@ public class countrymemo extends Activity {
         }
 
         mDatabase = com.example.kmucs.dugeun.db.MemoDatabase.getInstance(this);
+
         boolean isOpen = mDatabase.open();
+
         if (isOpen) {
             Log.d(TAG, "Memo database is open.");
         } else {
@@ -169,8 +171,9 @@ public class countrymemo extends Activity {
     }
 
     /**
-     * 메모 리스트 데이터 로딩(리스트 뷰에 기록된 메모정보를 뿌려줌)
+     * 메모 리스트 데이터 로딩(리스트 뷰에 기록된 메모정보를 보여줌)
      */
+
     public int loadMemoListData() {
         String SQL = "select _id, INPUT_DATE, CONTENT_TEXT, ID_PHOTO from MEMO order by INPUT_DATE desc";
 
@@ -231,10 +234,13 @@ public class countrymemo extends Activity {
     }
 
 
-    private void viewMemo(int position) {
+    // 메모 띄우기
+   private void viewMemo(int position) {
         com.example.kmucs.dugeun.MemoListItem item = (com.example.kmucs.dugeun.MemoListItem)mMemoListAdapter.getItem(position);
 
         // 메모 보기 액티비티 띄우기
+        // getdata : 메모정보가 담긴 배열을 가져오는 함수(memolistitem)
+
         Intent intent = new Intent(getApplicationContext(), com.example.kmucs.dugeun.MemoInsertActivity.class);
         intent.putExtra(com.example.kmucs.dugeun.BasicInfo.KEY_MEMO_MODE, com.example.kmucs.dugeun.BasicInfo.MODE_VIEW);
         intent.putExtra(com.example.kmucs.dugeun.BasicInfo.KEY_MEMO_ID, item.getId());

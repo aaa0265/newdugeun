@@ -38,7 +38,7 @@ public class PhotoSelectionActivity extends Activity {
 
 	Uri mAlbumPhotoUri; // 앨범사진에서 선택한 URI
 
-	Bitmap resultPhotoBitmap = null;
+	Bitmap resultPhotoBitmap = null;	//고른 사진
 
 	CoverFlow mPhotoGallery;  // Gallery 인스턴스
 
@@ -48,6 +48,7 @@ public class PhotoSelectionActivity extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		//사진 선택 화면(미리보기) layout 띄우기
 		setContentView(R.layout.photo_selection_activity);
 		setBottomBtns();
@@ -56,7 +57,7 @@ public class PhotoSelectionActivity extends Activity {
 
 		Log.d(TAG, "Loading gallery data...");
 
-
+		// 사진 미리보기 layout
 		mPhotoGallery = (CoverFlow)findViewById(R.id.loading_gallery);
 		Cursor c = getContentResolver().query(Images.Media.EXTERNAL_CONTENT_URI, null, null, null, Images.Media.DATE_TAKEN + " DESC"); //Image데이터 쿼리
 		PhotoCursorAdapter adapter = new PhotoCursorAdapter(this, c);
@@ -67,6 +68,7 @@ public class PhotoSelectionActivity extends Activity {
 		mPhotoGallery.setAnimationDuration(3000);
 
 		Log.d(TAG, "Count of gallery images : " + mPhotoGallery.getCount());
+
 
 		mPhotoGallery.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -94,7 +96,7 @@ public class PhotoSelectionActivity extends Activity {
 	}
 
 
-
+	// 화면에 이 activity가 보여지고 있으면 hasfocus가 true
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
 
@@ -109,9 +111,11 @@ public class PhotoSelectionActivity extends Activity {
 
 	}
 
+	// 확인, 취소 버튼
 	private void setBottomBtns(){
 		Button loading_okBtn = (Button) findViewById(R.id.loading_okBtn);
 		loading_okBtn.setOnClickListener(new OnClickListener() {
+			//확인 누르면 메모 입력하는 view(=parent) 보여줌
 			public void onClick(View v) {
 				showParentActivity();
 			}
@@ -119,20 +123,26 @@ public class PhotoSelectionActivity extends Activity {
 
 		Button loading_cancelBtn = (Button) findViewById(R.id.loading_cancelBtn);
 		loading_cancelBtn.setOnClickListener(new OnClickListener() {
+			//취소버튼 누르면 그냥 사진 선택 화면 종료
 			public void onClick(View v) {
 				finish();
 			}
 		});
 	}
 
+	// 사진을 선택했을 때 보여지는 layout
 	public void setSelectPhotoLayout() {
+		// 선택하는 부분에 글씨 보여지는 부분( 글씨가 흰색이라 어플에서도 잘 안보임)
 		mSelectPhotoText = (TextView) findViewById(R.id.loading_selectPhotoText);
 
+		// 선택하면 그 이미지가 중간에 크게 보여지는 부분
 		mSelectedPhotoImage = (ImageView)findViewById(R.id.loading_selectedPhoto);
 
+		//이미지 화면 보이기
 		mSelectedPhotoImage.setVisibility(View.VISIBLE);
 	}
 
+	// 사진 크기 조절
 	public static int getBitmapOfWidth( String fileName ){
 		try {
 			BitmapFactory.Options options = new BitmapFactory.Options();
@@ -146,6 +156,7 @@ public class PhotoSelectionActivity extends Activity {
 	}
 
 
+	//---------------------------------------------------------------------------------------보류
 	class PhotoCursorAdapter extends CursorAdapter {
 		int mGalleryItemBackground;
 

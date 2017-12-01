@@ -14,6 +14,7 @@
         android:background="#ffffffff"
         >
 
+        <!-- 텍스트 뷰가 아닌 버튼으로 한 이유는 위치를 고정해두고 버튼 위에서 내용만 바꿔주기 위해-->
         <TextView
             android:id="@+id/titleBackgroundBtn"
             android:layout_width="match_parent"
