@@ -1,6 +1,8 @@
 package com.example.kmucs.dugeun;
 
 
+/** 메모 리스트 관리 */
+
 public class MemoListItem {
 
 	private String[] mData; 			// Data 배열 (메모번호, 메모 입력 내용 [날짜, 내용, 사진이름, 사진uri]

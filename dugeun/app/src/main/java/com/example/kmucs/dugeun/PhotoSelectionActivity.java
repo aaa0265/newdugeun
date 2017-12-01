@@ -27,8 +27,9 @@ import android.widget.TextView;
 
 
 /**
- * 앨범에서 사진 선택 액티비티
+ * 앨범에서 사진 선택하기
  */
+
 public class PhotoSelectionActivity extends Activity {
 
 	public static final String TAG = "PhotoSelectionActivity";
@@ -39,7 +40,7 @@ public class PhotoSelectionActivity extends Activity {
 
 	Bitmap resultPhotoBitmap = null;
 
-	CoverFlow mPhotoGallery; // Gallery 인스턴스
+	CoverFlow mPhotoGallery;  // Gallery 인스턴스
 
 	public static int spacing = -45; // 갤러리의 간격
 
@@ -47,6 +48,7 @@ public class PhotoSelectionActivity extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//사진 선택 화면(미리보기) layout 띄우기
 		setContentView(R.layout.photo_selection_activity);
 		setBottomBtns();
 

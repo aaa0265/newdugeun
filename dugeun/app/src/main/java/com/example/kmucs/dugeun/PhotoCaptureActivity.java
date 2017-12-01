@@ -23,20 +23,21 @@ import android.widget.FrameLayout;
 import java.io.File;
 import java.io.FileOutputStream;
 
-// 사진찍는 activity
+/** 메모에 사진을 넣을 때, 직접 찍는 activity */
 
 
 public class PhotoCaptureActivity extends Activity {
 
 	public static final String TAG = "PhotoCaptureActivity";
 
-	//객체 생성
+	//instance
 	CameraSurfaceView mCameraView;
 	FrameLayout mFrameLayout;
 
 	//버튼을 두 번 눌렀을 때
 	boolean processing = false;
 
+    // 클래스 실행시
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -54,7 +55,7 @@ public class PhotoCaptureActivity extends Activity {
         mFrameLayout = (FrameLayout) findViewById(R.id.frame);
         mFrameLayout.addView(mCameraView);
 
-        setCaptureBtn();
+        setCaptureBtn(); //촬영 버튼 누름
     }
 
     // 촬영 버튼 눌렀을 때
@@ -64,7 +65,7 @@ public class PhotoCaptureActivity extends Activity {
         	public void onClick(View v) {
 				// processing = false 일때, 촬영됨.
         		if (!processing) {
-        			processing = true;
+        			processing = true; //촬영
 	        		mCameraView.capture(new CameraPictureCallback());
         		}
         	}
@@ -73,11 +74,13 @@ public class PhotoCaptureActivity extends Activity {
 
 	// key 이벤트 처리 (카메라 찍기 버튼)
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //사진 촬영 버튼 누름
 		if (keyCode == KeyEvent.KEYCODE_CAMERA) {
 			mCameraView.capture(new CameraPictureCallback());
 			return true;
         }
 
+        // 사진 촬영 취소
         else if(keyCode == KeyEvent.KEYCODE_BACK) {
             finish();
 			return true;
@@ -87,6 +90,7 @@ public class PhotoCaptureActivity extends Activity {
     }
 
 
+    //bitmap은 사진 크기에 관한 것을 도와준다.
     class CameraPictureCallback implements Camera.PictureCallback {
 
 		public void onPictureTaken(byte[] data, Camera camera) {
@@ -117,7 +121,7 @@ public class PhotoCaptureActivity extends Activity {
 
     			String photoName = "captured";
 
-    			// 기존 이미지가 있으면 삭제
+    			// 이미지가 있으면 삭제
     			File file = new File(BasicInfo.FOLDER_PHOTO + photoName);
 		    	if(file.exists()) {
 		    		file.delete();
@@ -149,6 +153,7 @@ public class PhotoCaptureActivity extends Activity {
     }
 
 
+    // SD카드에 저장해야되는데 핸드폰에 SD카드가 없을 때
     protected Dialog onCreateDialog(int id) {
 		Log.d(TAG, "onCreateDialog() called");
 
