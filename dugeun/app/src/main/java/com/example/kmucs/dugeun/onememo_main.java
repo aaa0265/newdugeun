@@ -65,7 +65,7 @@ public class onememo_main extends AppCompatActivity {
         }
     }
 
-    //메뉴 추가 아이콘 생성
+    //메모 추가 아이콘 생성
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -73,6 +73,8 @@ public class onememo_main extends AppCompatActivity {
         //Change menu icon color
         Drawable icon = menu.getItem(0).getIcon();
         icon.mutate();
+        //PorterDuff 도형이나 이미지 겹치는 부분 처리
+        //SRC_IN 겹치는 부분만 덮어쓰기 한 이미지 보이게하기(대상 픽셀을 포함하는 소스 픽셀을 유지하고 나머지 소스 및 대상 픽셀을 삭제)
         icon.setColorFilter(getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_IN);
         return super.onCreateOptionsMenu(menu);
     }
