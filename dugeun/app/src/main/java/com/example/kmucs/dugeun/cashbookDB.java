@@ -42,6 +42,7 @@ public class cashbookDB extends SQLiteOpenHelper {
         db.close();
     }
 
+    // 내용 입력 : DB에 가격, 항목 입력
     public void update(String item, int price) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
@@ -49,6 +50,7 @@ public class cashbookDB extends SQLiteOpenHelper {
         db.close();
     }
 
+    // 내용 삭제 : DB에서 항목을 찾아 삭제
     public void delete(String item) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행 삭제
@@ -56,6 +58,7 @@ public class cashbookDB extends SQLiteOpenHelper {
         db.close();
     }
 
+    // 조회(내용 출력) 함수 : DB 읽기가능으로 열어서 한줄(행)씩 읽어옴
     public String getResult() {
         // 읽기가 가능하게 DB 열기
         // 처음에는 result값 초기화

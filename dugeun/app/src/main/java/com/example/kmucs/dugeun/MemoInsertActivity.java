@@ -34,7 +34,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- 새 메모 / 메모 보기 액티비티
+ 새 메모 / 메모 확인(수정,보기) 액티비티
  */
 
 public class MemoInsertActivity extends Activity {

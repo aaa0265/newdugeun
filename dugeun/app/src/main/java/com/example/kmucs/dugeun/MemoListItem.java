@@ -3,11 +3,9 @@ package com.example.kmucs.dugeun;
 
 public class MemoListItem {
 
-	private String[] mData; // Data 배열
-
-	private String mId; // item id
-
-	private boolean mSelectable = true; // 이 아이템이 선택가능할경유 true
+	private String[] mData; 			// Data 배열 (메모번호, 메모 입력 내용 [날짜, 내용, 사진이름, 사진uri]
+	private String mId; 				// item id
+	private boolean mSelectable = true; // 이 아이템이 선택가능 할 경우 true
 
 	public MemoListItem(String itemId, String[] obj) {
 		mId = itemId;
@@ -26,7 +24,7 @@ public class MemoListItem {
 	}
 
 	/**
-	 * True if this item is selectable
+	 * 아이템이 선택 가능하다.
 	 */
 	public boolean isSelectable() {
 		return mSelectable;
@@ -49,14 +47,14 @@ public class MemoListItem {
 
 
 	/**
-	 * Get data array
+	 *  메모 내용이 담긴 array 리턴
 	 */
 	public String[] getData() {
 		return mData;
 	}
 
 	/**
-	 * Get data
+	 * index 위치에 있는 내용 가져오기
 	 */
 	public String getData(int index) {
 		if (mData == null || index >= mData.length) {
@@ -78,6 +76,7 @@ public class MemoListItem {
 
 	/**
 	 * Compare with the input object
+	 *
 	 */
 	public int compareTo(MemoListItem other) {
 		if (mData != null) {
