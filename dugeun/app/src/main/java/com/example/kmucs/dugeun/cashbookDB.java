@@ -1,7 +1,7 @@
 package com.example.kmucs.dugeun;
 
 /**
- * Created by Jiwon on 2017-10-31.
+ * 20163129 유지원
  */
 
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class cashbookDB extends SQLiteOpenHelper {
 
-    // DBHelper 생성자로 관리할 DB 이름과 버전 정보를 받음
+    // DBHelper 생성자로 관리할 DB 이름과 버전 정보를 받음 (DB 매개변수에 대한 설명은 cashbook.java에 첨부 되어있음)
     public cashbookDB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         //super : 상위클래스의 생성자를 호출
         super(context, name, factory, version);
@@ -20,10 +20,13 @@ public class cashbookDB extends SQLiteOpenHelper {
     // DB를 새로 생성할 때 호출되는 함수
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        
+        
         // 새로운 테이블 생성
-        /* 이름은 MONEYBOOK이고,item 문자열 컬럼, price 정수형 컬럼, create_at 문자열 컬럼으로 구성된 테이블을 생성.
-        // 테이블 0번째로 증가하는 정수가 있었지만 고정된 문자열만 출력할 것임*/
+         /* 
+          * 이름은 MONEYBOOK이고, 자동으로 값이 증가(KEY AUTOINCREMENT)하는 _id 정수형 기본키 컬럼과
+          * item 문자열 컬럼, price 정수형 컬럼, create_at 문자열 컬럼으로 구성된 테이블을 생성. 	
+          **/
 
         db.execSQL("CREATE TABLE MONEYBOOK (_id INTEGER PRIMARY KEY AUTOINCREMENT, item TEXT, price INTEGER, create_at TEXT);");
     }
@@ -35,7 +38,7 @@ public class cashbookDB extends SQLiteOpenHelper {
     }
 
     public void insert(String create_at, String item, int price) {
-        // 읽고 쓰기가 가능하게 DB 열기
+        // 쓰기가 가능하게 DB 열기
         SQLiteDatabase db = getWritableDatabase();
         // DB에 입력한 값(parameter로 받아옴)으로 행 추가
         db.execSQL("INSERT INTO MONEYBOOK VALUES(null, '" + item + "', " + price + ", '" + create_at + "');");
@@ -69,6 +72,9 @@ public class cashbookDB extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM MONEYBOOK", null);
         // 테이블의 모든 행을 방문
         while (cursor.moveToNext()) {
+            /* result += cursor.getString(0) 이렇게 하면 현재 커서의 위치가 출력 되지만
+        	 * 고정된 문자열("지출내역 : ")만 출력할 것임
+             **/
             result += " 지출내역 : "
                     + cursor.getString(1)
                     + " | "
